@@ -1,0 +1,122 @@
+@use "../../scss/" as *;
+
+.profile {
+  @include themify($themes) {
+    background-color: themed("bg3");
+    padding: 20px 70px;
+
+    @include mobile {
+      padding: 20px 10px;
+    }
+
+    @include tablet {
+      padding: 20px;
+    }
+
+    &_imgages {
+      width: 100%;
+      height: 300px;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+      overflow: hidden;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    &_container {
+      background-color: themed("bg1");
+      padding: 20px;
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+      margin-bottom: 20px;
+      &_avt {
+        @include flex(unset, space-between);
+        .img {
+          margin-top: -15%;
+          img {
+            width: 140px;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid themed("bg1");
+          }
+        }
+        .control {
+          display: flex;
+          gap: 10px;
+          button {
+            padding: 14px 20px;
+            background-color: themed("text2");
+            border-radius: $border-radius;
+            display: flex;
+            height: max-content;
+            color: themed("bg1");
+            gap: 10px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            &:hover {
+              opacity: 0.9;
+            }
+            &.btn-logout {
+              background-color: $red;
+              color: $color-w1;
+            }
+          }
+        }
+      }
+
+      &_info {
+        color: themed("text1");
+        .name {
+          font-weight: 500;
+          font-size: 24px;
+        }
+        .place {
+          @include flex(center, unset);
+          gap: 7px;
+          font-weight: 400;
+          font-size: 16px;
+          margin-top: 10px;
+          svg {
+            font-size: 1.2rem;
+          }
+        }
+        .link {
+          @include flex(center, unset);
+          gap: 7px;
+          font-weight: 400;
+          font-size: 16px;
+          margin-top: 10px;
+          svg {
+            font-size: 1.2rem;
+          }
+          a {
+            color: rgb(29, 155, 240);
+            &:hover {
+              text-decoration: underline !important;
+            }
+          }
+        }
+        .follow {
+          @include flex(center, unset);
+          gap: 10px;
+          margin-top: 10px;
+          font-size: 16px;
+          p {
+            color: themed("text1");
+            font-weight: 500;
+            span {
+              font-weight: 400;
+              color: themed("textSoft");
+            }
+          }
+        }
+      }
+    }
+  }
+}

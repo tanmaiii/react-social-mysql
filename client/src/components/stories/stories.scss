@@ -1,0 +1,120 @@
+@use "../../scss/" as *;
+
+.stories {
+  @include themify($themes) {
+    display: flex;
+    gap: 10px;
+    height: 250px;
+    width: 100%;
+    margin-bottom: 30px;
+    overflow: auto;
+    position: relative;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    @include mobile {
+      height: 160px;
+    }
+
+    .stories_silder {
+      display: flex;
+      width: 100%;
+      gap: 10px;
+      .story_user {
+        min-width: 20%;
+        border-radius: 10px;
+        overflow: hidden;
+        cursor: pointer;
+        @include flex(unset, unset);
+        flex-direction: column;
+        height: 100%;
+        background-color: themed("bg1");
+        @include mobile {
+          min-width: 25%;
+        }
+        .story_user_img {
+          min-width: 100%;
+          height: 70%;
+          object-fit: cover;
+          flex: 5;
+          transition: all 0.3s;
+          z-index: 1;
+          &:hover {
+            transform: scale(1.06);
+          }
+        }
+        .story_user_body {
+          flex: 5;
+          height: 30%;
+          display: flex;
+          justify-content: center;
+          min-width: 100%;
+          z-index: 2;
+          background-color: themed("bg1");
+
+          button {
+            margin-top: -22px;
+            cursor: pointer;
+            min-width: 44px;
+            height: 44px;
+            background-color: $color-primary;
+            border-radius: 50%;
+            @include flex(center, center);
+            color: themed("bg1");
+            border: 3px solid themed("bg1");
+            svg {
+              font-size: 1.6rem;
+            }
+          }
+        }
+      }
+
+      .story {
+        min-width: 20%;
+        border-radius: 10px;
+        overflow: hidden;
+        position: relative;
+        overflow: hidden;
+        @include mobile {
+          min-width: 25%;
+        }
+        &_img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.3s;
+        }
+
+        &:hover > .story_img {
+          transform: scale(1.06);
+        }
+
+        &_body {
+          padding: 20px;
+          @include flex(unset, space-between);
+          flex-direction: column;
+          width: 100%;
+          height: 100%;
+          cursor: pointer;
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: 2;
+
+          &_avt {
+            width: 38px;
+            height: 38px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid $color-primary;
+          }
+          span {
+            color: $color-w1;
+            font-size: 16px;
+            font-weight: 500;
+          }
+        }
+      }
+    }
+  }
+}

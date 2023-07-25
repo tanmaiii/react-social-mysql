@@ -1,0 +1,76 @@
+@use '../../scss/' as *;
+
+
+.navbar{
+    @include themify($themes){
+        @include flex(center,space-between);
+        padding: 10px 20px;
+        height: 60px;
+        position: sticky;
+        top: 0;
+        z-index: 999;
+        border-bottom: 1px solid themed('border');
+        background-color: themed('bg1');
+        color: themed('text1');
+        .left{
+            @include flex(center,unset);
+            height: 100%;
+            a{
+                font-size: 1.2rem;
+                font-weight: 600;
+                margin-right: 10px;
+                cursor: pointer;
+                color: themed('primary')
+            }
+            .search{
+                border-radius: 8px;
+                border: 1px solid themed('border');
+                height: 100%;
+                padding: 0 10px;
+                @include flex(center,unset);
+                svg{
+                    font-size: 1.1rem;
+                }
+                input{
+                    padding-left: 10px;
+                    height: 100%;
+                    font-size: 1.1rem;
+                    min-width: 200px;
+                    @include mobile{
+                        display: none                    
+                    }
+                }
+            }
+        }
+        .right{
+            @include flex(center,unset);
+            height: 100%;
+            &_item{
+                height: 100%;
+                @include flex(center,unset);
+                padding: 0 10px;
+                cursor: pointer;
+                svg{
+                    font-size: 1.6rem;
+                }
+                &.user{
+                    @include flex(center,unset);
+                    img{
+                        height: 40px;
+                        width: 40px;
+                        object-fit: cover;
+                        border-radius: 50%;
+                    }
+                    span{
+                        color: themed('text1');
+                        margin-left: 10px;
+                        font-size: 1.1rem;
+                        @include mobile{
+                            display: none                    
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

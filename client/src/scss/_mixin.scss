@@ -1,0 +1,70 @@
+@use './variables' as *;
+
+$themes: (
+  light: (
+    text1: $color-b2,
+    text2: $color-b3,
+    textSoft: $color-b5,
+    bg1: $color-w1,
+    bg2: $color-w2,
+    bg3: $color-w3,
+    bg4: $color-w4,
+    primary: $color-primary,
+    border: rgb(234, 234, 234),
+  ),
+  dark: (
+    text1: $color-w1,
+    text2: $color-w2,
+    textSoft: $color-w5,
+    bg1: $color-b2,
+    bg2: $color-b3,
+    bg3: $color-b4,
+    bg4: $color-b5,
+    primary: $color-primary,
+    border: #292929,
+  ),
+);
+
+@mixin themify($themes) {
+    @each $theme, $map in $themes {
+      .theme-#{$theme} & {
+        $theme-map: () !global;
+
+        @each $key, $submap in $map {
+          $value: map-get(map-get($themes, $theme), "#{$key}");
+          $theme-map: map-merge(
+            $theme-map,
+            (
+              $key: $value,
+            )
+          ) !global;
+        }
+        @content;
+
+        $theme-map: null !global;
+      }
+    }
+}
+
+@function themed($key) {
+ @return map-get($theme-map, $key);
+}
+
+
+@mixin flex($aligin-item, $justify-content){
+    display: flex;
+    align-items: $aligin-item;
+    justify-content: $justify-content;
+}
+
+@mixin text($line){
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: $line;
+    -webkit-box-orient: vertical;
+}
+
+@mixin overlay{
+    background-color: rgba($color: #0000, $alpha: 0.6);
+}

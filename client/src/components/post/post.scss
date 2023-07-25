@@ -1,0 +1,129 @@
+@use "../../scss/" as *;
+
+.post {
+  @include themify($themes) {
+    background-color: themed("bg1");
+    padding: 20px 20px 6px 20px;
+    border-radius: $border-radius;
+    margin-bottom: 20px;
+    &_container {
+      &_user {
+        @include flex(center, space-between);
+        .userInfo {
+          @include flex(center, unset);
+
+          img {
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-right: 10px;
+          }
+
+          .details {
+            @include flex(unset, unset);
+            flex-direction: column;
+            .name {
+              font-size: 16px;
+              font-weight: 500;
+              color: themed("text1");
+            }
+            .date {
+              font-size: 12px;
+              font-weight: 400;
+              color: themed("text2");
+            }
+          }
+        }
+        .post_more {
+          position: relative;
+          .btn-menu {
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 50%;
+            @include flex(center, center);
+            transition: all 0.3s;
+            &:hover {
+              background-color: themed("bg2");
+            }
+            svg {
+              font-size: 1.6rem;
+              color: themed("text2");
+            }
+          }
+          .menu-body {
+            position: absolute;
+            top: 100%;
+            background-color: themed("bg2");
+            right: 0;
+            padding: 10px;
+            min-width: 200px;
+            border-radius: 10px;
+            gap: 10px;
+            display: grid;
+            button {
+              @include flex(center, unset);
+              gap: 10px;
+              color: themed("text1");
+              font-size: 16px;
+              padding: 8px 10px;
+              cursor: pointer;
+              border-radius: 10px;
+              width: 100%;
+              text-align: start;
+              transition: all 0.3s;
+              svg{
+                font-size: 1.4rem;
+              }
+              &:hover {
+                background-color: themed("bg1");
+              }
+            }
+          }
+        }
+      }
+
+      &_content {
+        margin: 20px 0;
+        .content_desc {
+          color: themed("text1");
+          font-size: 16px;
+          @include text(4);
+        }
+        img {
+          cursor: pointer;
+          width: 100%;
+          max-height: 500px;
+          object-fit: contain;
+          margin-top: 20px;
+        }
+      }
+
+      &_info {
+        @include flex(center, unset);
+        gap: 10px;
+        border-top: 1px solid themed("border");
+        padding-top: 6px;
+        .item {
+          @include flex(center, center);
+          width: 33.333%;
+          cursor: pointer;
+          padding: 10px 0;
+          border-radius: 10px;
+          color: themed("text1");
+          transition: all 0.3s;
+          &:hover {
+            background-color: themed("bg4");
+          }
+          svg {
+            font-size: 1.3rem;
+          }
+          span {
+            margin-left: 10px;
+            font-size: 15px;
+          }
+        }
+      }
+    }
+  }
+}

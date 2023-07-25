@@ -1,0 +1,76 @@
+@use "../../scss/" as *;
+
+.comments {
+  @include themify($themes) {
+    width: 100%;
+    padding: 10px 0;
+
+    &_write {
+      @include flex(center, unset);
+      margin-bottom: 10px;
+      img {
+        width: 40px;
+        height: 40px;
+        object-fit: cover;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+      .write_input {
+        width: 100%;
+        @include flex(center, unset);
+        background-color: themed("bg3");
+        padding: 10px 20px;
+        border-radius: 10px;
+        input {
+          color: themed("text1");
+          flex: 1;
+          font-size: 16px;
+          margin: 10px 0;
+        }
+        button {
+          @include flex(center, center);
+          cursor: pointer;
+          svg {
+            font-size: 1.4rem;
+            line-height: 1;
+            color: themed("text1");
+          }
+        }
+      }
+    }
+
+    &_comment {
+      @include flex(unset, unset);
+      margin-bottom: 10px;
+      width: 100%;
+      img {
+        width: 40px;
+        height: 40px;
+        object-fit: cover;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+      .info {
+        max-width: 90%;
+        &_content{
+            background-color: themed("bg3");
+            padding: 10px;
+            border-radius: 10px;
+            color: themed("text1");
+            font-size: 16px;
+            max-width: max-content;
+            span{
+                font-weight: 500;
+            }
+            p{
+                font-weight: 400;
+            }
+        }
+        .date{
+            font-size: 14px;
+            color: themed('text2');
+        }
+      }
+    }
+  }
+}

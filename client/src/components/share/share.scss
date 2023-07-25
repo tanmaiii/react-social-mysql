@@ -1,0 +1,132 @@
+@use "../../scss/" as *;
+
+.share {
+  @include themify($themes) {
+    background-color: themed("bg1");
+    padding: 20px;
+    border-radius: $border-radius;
+    margin-bottom: 20px;
+    .container {
+      width: 100%;
+      .top {
+        @include flex(unset, unset);
+        .avt {
+          margin-right: 10px;
+          img {
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+            border-radius: 50%;
+          }
+        }
+        .input {
+          background-color: themed("bg2");
+          width: 100%;
+          padding: 10px 20px;
+          border-radius: 20px;
+          @include flex(start, unset);
+          flex-direction: column;
+          textarea {
+            color: themed("text1");
+            height: 40px;
+            max-height: 180px;
+            resize: none;
+            font-size: 16px;
+            padding: 10px 0;
+            width: 100%;
+            margin-right: 10px;
+          }
+          .img_prev {
+            max-height: 160px;
+            width: auto;
+            position: relative;
+            padding: 10px;
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              cursor: pointer;
+              &:hover{
+                opacity: 0.9;
+              }
+            }
+            button {
+              position: absolute;
+              top: 0px;
+              right: 0px;
+              padding: 6px;
+              background-color: $color-primary;
+              border-radius: 50%;
+              @include flex(center, center);
+              cursor: pointer;
+              svg{
+                color: $color-w1;
+                font-size: 1rem;
+              }
+              &:hover{
+                opacity: 0.8;
+              }
+            }
+          }
+        }
+      }
+      hr {
+        margin: 20px 0;
+        border: none;
+        height: 0.5px;
+        background-color: themed("border");
+      }
+      .bottom {
+        @include flex(center, space-between);
+        .left {
+          @include flex(unset, unset);
+          gap: 10px;
+          .item {
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            label {
+              padding: 10px 20px;
+              cursor: pointer;
+              @include flex(center, unset);
+              gap: 6px;
+              svg {
+                font-size: 1.3rem;
+              }
+              span {
+                color: themed("text1");
+                font-size: 16px;
+                @include mobile {
+                  display: none;
+                }
+              }
+            }
+            &:nth-child(1) svg {
+              color: #45bd62;
+            }
+            &:nth-child(2) svg {
+              color: #f7b928;
+            }
+            &:nth-child(3) svg {
+              color: #1877f2;
+            }
+            &:hover {
+              background-color: themed("bg2");
+            }
+          }
+        }
+        .right {
+          button {
+            padding: 10px 20px;
+            background-color: $color-primary;
+            color: $color-w1;
+            font-size: 16px;
+            font-weight: 500;
+            border-radius: 10px;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}
